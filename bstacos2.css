@@ -174,7 +174,7 @@ h1 {
 }
 
 .section-histoire {
-    background: linear-gradient(120deg, #4A1D0B 0%, #7A2107 100%);
+    background: linear-gradient(120deg, #4A1D0B 0%, #B43A18 40%, #FFB347 100%);
     border: 1px solid #000000;
     margin: 50px 20px 20px;
     padding: 10px;
@@ -183,13 +183,13 @@ h1 {
 
 @keyframes histoire-gradient {
     0% {
-        background: linear-gradient(120deg, #4A1D0B 0%, #7A2107 100%);
+        background: linear-gradient(120deg, #4A1D0B 0%, #B43A18 40%, #FFB347 100%);
     }
     50% {
-        background: linear-gradient(120deg, #7A2107 0%, #A42A08 100%);
+        background: linear-gradient(120deg, #B43A18 0%, #FFB347 60%, #FFD580 100%);
     }
     100% {
-        background: linear-gradient(120deg, #4A1D0B 0%, #7A2107 100%);
+        background: linear-gradient(120deg, #4A1D0B 0%, #B43A18 40%, #FFB347 100%);
     }
 }
 
@@ -810,74 +810,155 @@ canvas {
     background: linear-gradient(120deg, #ffe6fa 60%, #fffde7 100%);
     border-radius: 18px;
     margin: 40px 20px 30px 20px;
-    box-shadow: 0 6px 32px #0002;
+    box-shadow: 0 6px 32px #0002, inset 0 1px 18px #ffe6fa33;
     padding: 40px 0 40px 0;
     text-align: center;
+    position: relative;
 }
 
 .section-insolite h1 {
     font-size: 2.5em;
     color: #B43A18;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     font-family: 'Lexend', 'Poppins', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    text-shadow: 0 2px 12px #FFB34733, 0 1px 0 #fffbe6;
+    position: relative;
+}
+.section-insolite h1::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 70px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #FFB347 30%, #FFD580 70%);
+    opacity: 0.85;
+    animation: faq-underline 1.2s cubic-bezier(.4,2,.6,1);
 }
 
 .insolite-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
-    max-width: 900px;
+    gap: 44px;
+    max-width: 950px;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 .insolite-bloc {
     background: #fff3e0;
-    border-radius: 14px;
-    box-shadow: 0 2px 12px #B43A1820;
-    padding: 28px 24px 20px 24px;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #B43A1820;
+    padding: 32px 28px 24px 28px;
     min-width: 270px;
-    max-width: 400px;
-    flex: 1 1 320px;
+    max-width: 420px;
+    flex: 1 1 340px;
     margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    animation: insolite-fadein 0.9s cubic-bezier(.4,2,.6,1);
+    border: 2px solid #FFB34722;
+}
+@keyframes insolite-fadein {
+    from { opacity: 0; transform: translateY(32px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.insolite-bloc:hover {
+    background: #fffbe6;
+    transform: scale(1.025) translateY(-2px);
+    box-shadow: 0 6px 24px #FFB34744, 0 2px 8px #B43A1840;
+    border: 2px solid #FFB347;
 }
 
 .insolite-bloc h2 {
     color: #FF4E45;
-    font-size: 1.5em;
-    margin-bottom: 12px;
+    font-size: 1.35em;
+    margin-bottom: 14px;
     font-family: 'Lexend', 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    text-shadow: 0 1px 6px #FFB34722;
 }
 
 .insolite-bloc ul {
     text-align: left;
     margin: 0 0 0 18px;
     color: #B43A18;
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 1.13em;
+    line-height: 1.7;
+    padding-left: 0;
+}
+
+.insolite-form {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .insolite-form input[type="text"] {
-    font-size: 1em;
-    border: 1px solid #FFB347;
+    font-size: 1.08em;
+    border: 1.5px solid #FFB347;
     outline: none;
     background: #fff7e6;
     color: #B43A18;
+    border-radius: 8px;
+    padding: 10px 14px;
+    width: 90%;
+    max-width: 320px;
+    transition: border 0.18s, box-shadow 0.18s;
+    box-shadow: 0 1px 4px #FFB34722;
+}
+.insolite-form input[type="text"]:focus {
+    border: 1.5px solid #FFB347;
+    box-shadow: 0 2px 8px #FFB34744;
 }
 
 .insolite-form input[type="text"]::placeholder {
     color: #B43A18;
     opacity: 0.8;
+    font-style: italic;
 }
 
 .insolite-form button {
-    font-size: 1em;
-    transition: background 0.2s;
+    font-size: 1.08em;
+    padding: 10px 28px;
+    border-radius: 8px;
+    background: linear-gradient(90deg,#FFB347 60%,#FFD580 100%);
+    color: #692909;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-left: 0;
+    box-shadow: 0 2px 8px #B43A1840;
+    transition: background 0.2s, transform 0.15s;
+}
+.insolite-form button:hover {
+    background: linear-gradient(90deg,#FFD580 60%,#FFB347 100%);
+    transform: scale(1.05);
 }
 
-.insolite-form button:hover {
-    background: #FFCD4F;
+.insolite-feedback {
+    margin-top: 10px;
+    color: #FFB347;
+    font-weight: bold;
+    display: none;
+    font-size: 1.08em;
+    background: #fffbe6;
+    border-radius: 8px;
+    padding: 8px 0;
+    box-shadow: 0 1px 6px #FFB34722;
+    animation: insolite-feedback-pop 0.6s;
+}
+@keyframes insolite-feedback-pop {
+    from { opacity: 0; transform: scale(0.95);}
+    to { opacity: 1; transform: scale(1);}
 }
 
 .section-faq {
@@ -887,42 +968,105 @@ canvas {
     box-shadow: 0 4px 24px #B43A1840, 0 1px 8px #FFB34740;
     padding: 40px 0 40px 0;
     text-align: center;
+    box-shadow: 0 4px 24px #B43A1840, 0 1px 8px #FFB34740, inset 0 1px 16px #fffde755;
+    position: relative;
+    overflow: visible;
 }
 
 .section-faq h1 {
-    font-size: 2.3em;
+    font-size: 2.7em;
     color: #B43A18;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     font-family: 'Lexend', 'Poppins', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    animation: faq-title-pop 1.2s cubic-bezier(.4,2,.6,1) 1;
+    text-shadow: 0 4px 24px #FFB34766, 0 1px 0 #fffbe6, 0 0 2px #fffde7;
+    position: relative;
+    background: linear-gradient(90deg, #FFB347 10%, #FFD580 50%, #FFB347 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #B43A18;
+    background-clip: text;
+    color: #B43A18;
+}
+.section-faq h1::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 80px;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #FFB347 30%, #FFD580 70%);
+    opacity: 0.85;
+    animation: faq-underline 1.2s cubic-bezier(.4,2,.6,1);
+}
+@keyframes faq-underline {
+    from { width: 0; opacity: 0; }
+    to { width: 80px; opacity: 0.85; }
 }
 
 .faq-list {
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
+    border-top: 2px dashed #FFB34744;
+    padding-top: 18px;
 }
 
 .faq-item {
     background: #fff3e0;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px #B43A1810;
-    margin-bottom: 22px;
-    padding: 22px 28px;
-    border-left: 6px solid #FFB347;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #FFB34722, 0 1px 4px #B43A1810;
+    margin-bottom: 28px;
+    padding: 28px 36px;
+    border-left: 7px solid #FFB347;
+    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    position: relative;
+    animation: faq-fadein 0.8s cubic-bezier(.4,2,.6,1);
+}
+
+@keyframes faq-fadein {
+    from { opacity: 0; transform: translateY(24px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.faq-item:hover {
+    background: #fffbe6;
+    transform: scale(1.025) translateY(-2px);
+    box-shadow: 0 6px 24px #FFB34744, 0 2px 8px #B43A1840;
+    border-left: 7px solid #FF4E45;
 }
 
 .faq-item h3 {
     color: #B43A18;
-    font-size: 1.25em;
-    margin-bottom: 8px;
+    font-size: 1.28em;
+    margin-bottom: 10px;
     font-family: 'Lexend', 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px #FFB34733;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.faq-item h3::before {
+    content: "❓";
+    font-size: 1.1em;
+    color: #FFB347;
+    margin-right: 4px;
+    filter: drop-shadow(0 1px 2px #FFB34755);
 }
 
 .faq-item p {
     color: #692909;
-    font-size: 1.08em;
+    font-size: 1.09em;
     margin: 0;
+    line-height: 1.6;
+    padding-left: 4px;
+    border-left: 2px solid #FFB34722;
+    margin-left: 2px;
 }
 
 .section-challenge {
